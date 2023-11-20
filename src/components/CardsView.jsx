@@ -23,17 +23,23 @@ const CardsView = () => {
 
   return (
     <>
-      <container className="card-view">
+      <section className="card-view">
 
         {puppyList.map((eachPuppy) => {
-          return <div key={eachPuppy.id}>
+          return <div key={eachPuppy.id}
+          onClick={(e) =>{
+            setSelectedPuppy(eachPuppy.id);
+            console.log(selectedPuppy)
+          }}
+          
+          >
             <h4>{eachPuppy.name}</h4>
             <img src={eachPuppy.imageUrl}/>
           </div>
         })
         }
 
-      </container>
+      </section>
     </>
   )
 }
