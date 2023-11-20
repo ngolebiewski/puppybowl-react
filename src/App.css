@@ -1,0 +1,15 @@
+* {
+  border: 1px solid hotpink;
+}
+
+body {
+  font-family: 'Courier New', Courier, monospace;
+}
+header {
+  padding: 20px;
+  background-image: linear-gradient(blue, red);
+}
+
+header>h1 {
+  color: white;
+}
