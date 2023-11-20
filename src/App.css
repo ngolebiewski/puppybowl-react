@@ -20,6 +20,22 @@ section {
   flex-direction: row;
 }
 
+.detail-view {
+  width: 500px;
+  margin: 10px;
+  border: 2px solid black;
+  padding: 20px;
+  border-radius: 20px;
+  background-color: hotpink;
+  margin: 20px;
+
+}
+
+.detail-view > button {
+  padding: 5px;
+  font-size: 1.2em;
+}
+
 .card-view > div {
   width: 120px;
   margin: 10px;

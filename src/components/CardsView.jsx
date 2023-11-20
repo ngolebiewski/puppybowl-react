@@ -1,10 +1,8 @@
 import { useState, useEffect } from "react";
 
-const CardsView = () => {
+const CardsView = ({setSelectedPuppy, setDetailView}) => {
   const [puppyList, setPuppyList] = useState([]);
-  const [selectedPuppy, setSelectedPuppy] = useState('');
 
-  // if (puppyList.length < 1) {
   useEffect(() => {
 
     try {
@@ -29,7 +27,7 @@ const CardsView = () => {
           return <div key={eachPuppy.id}
           onClick={(e) =>{
             setSelectedPuppy(eachPuppy.id);
-            console.log(selectedPuppy)
+            setDetailView(true);
           }}
           
           >
