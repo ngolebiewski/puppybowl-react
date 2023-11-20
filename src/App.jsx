@@ -6,14 +6,15 @@ import DetailView from './components/DetailView.jsx'
 
 const App = () => {
   const [selectedPuppy, setSelectedPuppy] = useState('');
-  const [detailView, setDetailView] = useState(false)
+  const [detailView, setDetailView] = useState(false);
+  const [puppyList, setPuppyList] = useState([]);
 
   return (
     <>
       <Header />
-      {!detailView? <CardsView setSelectedPuppy={setSelectedPuppy} setDetailView={setDetailView}/> 
+      {!detailView? <CardsView puppyList={puppyList} setPuppyList={setPuppyList} setSelectedPuppy={setSelectedPuppy} setDetailView={setDetailView}/> 
       : 
-      <DetailView selectedPuppy={selectedPuppy} setDetailView={setDetailView}/>}
+      <DetailView puppyList={puppyList} selectedPuppy={selectedPuppy} setDetailView={setDetailView}/>}
     </>
   
   )
