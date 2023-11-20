@@ -1,5 +1,6 @@
 import './App.css'
 import Header from './components/Header.jsx'
+import CardsView from './components/CardsView.jsx'
 
 const App = () => {
 
@@ -7,7 +8,7 @@ const App = () => {
   return (
     <>
       <Header />
-      <h1>hello puppy world!</h1>
+      <CardsView />
     </>
   )
 }
