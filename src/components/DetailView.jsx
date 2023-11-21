@@ -2,6 +2,22 @@ import { useEffect, useState } from "react";
 
 const DetailView = ({ selectedPuppy, setDetailView }) => {
 
+  const deleteOnClick = (e) => {
+    e.preventDefault();
+    console.log('deleted');
+    try {
+      const deletePuppy = async () => {
+        const response = await fetch(`https://fsa-puppy-bowl.herokuapp.com/api/2310-FSA-ET-WEB-FT-SF/players/${selectedPuppy.id}`, 
+        {
+          method: "DELETE",
+        })
+      }
+      deletePuppy();
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   return (
     <>
       <section>
@@ -16,38 +32,44 @@ const DetailView = ({ selectedPuppy, setDetailView }) => {
           <form className="teamRadioBox">
             <h1>Add to a team/change team</h1>
 
-            <label><input type="radio" id="Ruff" name="team" value="39"/>
-            Team Ruff</label>
+            <label><input type="radio" id="Ruff" name="team" value="39" />
+              Team Ruff</label>
 
             <label><input type="radio" id="Fluff" name="team" value="40" />
-            Team Fluff</label>
+              Team Fluff</label>
 
             <button
-            onSubmit={(e) => {
-              e.preventDefault();
-              const teamId = e.target.value;
-              selectedPuppy.teamId=teamId;
-              console.log(teamId)
-              
-              useEffect(()=>{
-              const updateTeam = async () => {
-                const response = await fetch(`https://fsa-puppy-bowl.herokuapp.com/api/2310-FSA-ET-WEB-FT-SF/players/${selectedPuppy.id}`, {
-                  method: "PUT", 
-                  headers: {"Content-Type": "application/json"},
-                  body: JSON.stringify(response.data.player.teamId=teamId)})
+              onSubmit={(e) => {
+                e.preventDefault();
+                const teamId = e.target.value;
+                selectedPuppy.teamId = teamId;
+                console.log(teamId)
+
+                useEffect(() => {
+                  const updateTeam = async () => {
+                    const response = await fetch(`https://fsa-puppy-bowl.herokuapp.com/api/2310-FSA-ET-WEB-FT-SF/players/${selectedPuppy.id}`, {
+                      method: "PUT",
+                      headers: { "Content-Type": "application/json" },
+                      body: JSON.stringify(response.data.player.teamId = teamId)
+                    })
+                  }
+                  updateTeam();
+                }, [])
+
               }
-              updateTeam();
-            }, [])
-           
-            }
-          }
+              }
             >Submit</button>
           </form>
 
+          <form className="teamRadioBox">
+            <button onClick={(e) => {
+              deleteOnClick();
+            }}>Delete this Puppy</button>
+          </form>
 
           <button onClick={(e) => { setDetailView(false) }}>Back</button>
         </div>
-      </section>
+      </section >
     </>
   )
 }
