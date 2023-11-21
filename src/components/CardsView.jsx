@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 
-const CardsView = ({setSelectedPuppy, setDetailView}) => {
-  const [puppyList, setPuppyList] = useState([]);
+const CardsView = ({setSelectedPuppy, setDetailView, puppyList, setPuppyList}) => {
 
   useEffect(() => {
 
@@ -12,7 +11,6 @@ const CardsView = ({setSelectedPuppy, setDetailView}) => {
         setPuppyList(responseJson.data.players)
       };
       fetchPuppies()
-      console.log(puppyList)
     } catch (error) {
       console.error(error);
     }
@@ -26,14 +24,17 @@ const CardsView = ({setSelectedPuppy, setDetailView}) => {
         {puppyList.map((eachPuppy) => {
           return <div key={eachPuppy.id}
           onClick={(e) =>{
-            setSelectedPuppy(eachPuppy.id);
+            setSelectedPuppy(eachPuppy);
             setDetailView(true);
           }}
           
+        
+
           >
             <h4>{eachPuppy.name}</h4>
             <img src={eachPuppy.imageUrl}/>
           </div>
+          x--;
         })
         }
 
