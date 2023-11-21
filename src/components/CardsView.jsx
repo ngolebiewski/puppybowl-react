@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 
 const CardsView = ({setSelectedPuppy, setDetailView, puppyList, setPuppyList}) => {
-
   useEffect(() => {
 
     try {
@@ -15,8 +14,7 @@ const CardsView = ({setSelectedPuppy, setDetailView, puppyList, setPuppyList}) =
       console.error(error);
     }
   }, []);
-
-
+  
   return (
     <>
       <section className="card-view">
@@ -28,13 +26,11 @@ const CardsView = ({setSelectedPuppy, setDetailView, puppyList, setPuppyList}) =
             setDetailView(true);
           }}
           
-        
-
           >
             <h4>{eachPuppy.name}</h4>
             <img src={eachPuppy.imageUrl}/>
           </div>
-          x--;
+          ;
         })
         }
 

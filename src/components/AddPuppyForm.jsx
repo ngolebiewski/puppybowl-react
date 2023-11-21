@@ -8,14 +8,19 @@ const AddPuppyForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(name, breed, imageUrl)
-    const postPuppy = async () =>{
+    // should use useEffect to get a reRender!!!
+    // keep on getting an error
+    try{
+      const postPuppy = async () =>{
       const response = await fetch('https://fsa-puppy-bowl.herokuapp.com/api/2310-FSA-ET-WEB-FT-SF/players', {
         method: "POST", 
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify({name, breed, imageUrl})})
     }
     postPuppy();
-  }
+  } catch (error) {
+    console.log(error);
+  }}
 
   return (
     <>
@@ -37,9 +42,3 @@ const AddPuppyForm = () => {
 }
 
 export default AddPuppyForm;  
-
-// onSubmit={(e) => {
-//   e.preventDefault();
-//   console.log('submitted!')
-//   console.log(name, breed, imageUrl)
-// }}
